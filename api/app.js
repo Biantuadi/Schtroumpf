@@ -7,6 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // routes
+const schtroumpfRoutes = require('./routes/schtroumpf.router');
+app.use('/api/schtroumpf', schtroumpfRoutes);
 
 
 module.exports = app;

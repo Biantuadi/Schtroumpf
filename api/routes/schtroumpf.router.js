@@ -1,8 +1,8 @@
-const exoress = require("express");
+const express = require("express");
 const router = express.Router();
 
 // importation des modules
-const auth = require("../middleware/auth");
+const auth = require("../middleware/auth");  
 
 // importation des controllers
 const schtroumpfCtrl = require("../controllers/schtroumpf.ctrl");
@@ -17,3 +17,5 @@ router.get("/", auth, schtroumpfCtrl.getAllSchtroumpfs);
 router.get("/:id", auth, schtroumpfCtrl.getSchtroumpf);
 router.put("/:id", auth, schtroumpfCtrl.modifySchtroumpf);
 router.delete("/:id", auth, schtroumpfCtrl.deleteSchtroumpf);
+
+module.exports = router;

@@ -10,6 +10,7 @@ const schtroumpfSchema = new Schema({
     type: String,
     default: "https://www.smurf.com/characters-smurfs/handy.png",
   },
+  bio: { type: String, default: "I'm a Schtroumpf! and I'm proud of it!" },
 });
 
 schtroumpfSchema.plugin(uniqueValidator);
