@@ -7,11 +7,11 @@ app.use(cors());
 app.use(express.json());7
 
 // DB
-require('./db/mongoDB');
+require('./db/mongoDB'); 
 
 // routes
 const schtroumpfRoutes = require('./routes/schtroumpf.router');
-app.use('/api/schtroumpf', schtroumpfRoutes);
+app.use('/api/', schtroumpfRoutes);
 
 
 module.exports = app;
