@@ -1,1 +1,17 @@
-<p>header works!</p>
+<header class="container_header">
+    <div class="header_logo">
+        <h2 class="logo">Schtr<span class="logo_span">oumpf</span></h2>
+    </div>
+
+    <nav class="header_nav" *ngIf="isLogged">
+        <li routerLink="/home" routerLinkActive="active">Accueil</li>
+        <li routerLink="/profile" routerLinkActive="active">Profile</li>
+        <button routerLink="/login" routerLinkActive="active">Logout</button>
+    </nav>
+
+
+    <nav class="header_nav" *ngIf="!isLogged">
+        <li routerLink="/login" routerLinkActive="active">Login</li>
+        <li routerLink="/signup" routerLinkActive="active">Signup</li>
+    </nav>
+</header>
