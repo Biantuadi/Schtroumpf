@@ -24,12 +24,19 @@ export class SchtroumpfComponent {
     this.schtroumpfService.getschtroumpfs().subscribe(
       (res: any) => {
         this.schtroumpfs = res;
+
+        const userId = localStorage.getItem('userId');
+        if (!userId) return;
+
+        this.schtroumpfs.sort((a, b) => (a._id.toString() === userId) ? -1 : (b._id.toString() === userId) ? 1 : 0);
+
       },
       (err) => console.log(err)
     )
 
     const userId = localStorage.getItem('userId');
     if (!userId) return;
+
     this.userId = userId;
 
   }
@@ -40,7 +47,7 @@ export class SchtroumpfComponent {
     const container = document.querySelector('.container_schtroumpf');
     if (!container) return;
 
-      container.classList.add('blur');
+    container.classList.add('blur');
 
   }
 

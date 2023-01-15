@@ -49,6 +49,8 @@
         color: #fff;
     }
 
+
+
 }
 
 
@@ -59,15 +61,21 @@ form {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    margin-top: 10px;
 
     .form-group {
         display: flex;
         flex-direction: column;
 
-        span {
+        .error {
             color: red;
             font-size: 13px;
             margin-top: -7px;
+            display: none;
+        }
+
+        .showError {
+            display: block;
         }
     }
 

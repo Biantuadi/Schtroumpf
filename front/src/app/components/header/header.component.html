@@ -4,8 +4,11 @@
     </div>
 
     <nav class="header_nav" *ngIf="isLogged">
-        <li routerLink="/home" routerLinkActive="active">Accueil</li>
-        <li routerLink="/profile" routerLinkActive="active">Profile</li>
+        <!-- icon acceuil -->
+        <i routerLink="/home" class="fas fa-home" routerLinkActive="active"></i>
+        <!-- icon profil -->
+        <i routerLink="/profile" class="fas fa-user" routerLinkActive="active"></i>
+
         <button (click)="logout()">Logout</button>
     </nav>
 

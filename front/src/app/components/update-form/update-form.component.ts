@@ -12,6 +12,7 @@ import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
 export class UpdateFormComponent {
   updateForm!: FormGroup;
   formPreview$!: Observable<Schtroumpf>;
+  urlRegex!: RegExp;
 
   // @Input() schtroumpfs!: Schtroumpf;*
   @Input() updateFormContainer!: boolean;
@@ -22,12 +23,15 @@ export class UpdateFormComponent {
   ) { }
 
   ngOnInit() {
+
+    this.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
+
     this.updateForm = this.formBuilder.group({
-      name: ["", Validators.required],
+      name: "",
       role: "",
-      imageUrl: ["", Validators.required],
-      bio: ["", Validators.required],
-    }, { updateOn: 'blur' });
+      imageUrl: ["", Validators.pattern(this.urlRegex)],
+      bio: "",
+    });
 
     this.formPreview$ = this.updateForm.valueChanges.pipe(
       map((formValue) => ({
@@ -37,16 +41,19 @@ export class UpdateFormComponent {
     );
   }
 
-  closeForm(){
+  closeForm() {
     this.updateFormContainer = false;
     this.updateFormContainerChange.emit(this.updateFormContainer);
 
     const container = document.querySelector('.container_schtroumpf');
     if (!container) return;
-    
-      container.classList.remove('blur');
-}
 
-  onSubmit() { }
+    container.classList.remove('blur');
+  }
+
+  onSubmit() { 
+    console.log(this.updateForm.value);
+    
+  }
 
 }
