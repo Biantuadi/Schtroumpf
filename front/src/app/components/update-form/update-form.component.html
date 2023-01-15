@@ -2,6 +2,8 @@
     <h3>Update <span>Schtroumpf</span></h3>
 
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <!-- icon close -->
+        <i class="fa fa-times" aria-hidden="true" (click)="closeForm()"></i>
         <div class="form-group">
             <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
             <span

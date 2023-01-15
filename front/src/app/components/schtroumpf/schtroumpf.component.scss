@@ -6,6 +6,12 @@
 
 }
 
+.blur{
+    // effet blur
+    filter: blur(5px);
+    pointer-events: none;
+}
+
 .schtroumpf {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,6 +23,7 @@
     padding: 18px;
     gap: 13px;
     position: relative;
+    transition: all 0.3s ease-in-out;
 
     img {
         width: 100%;

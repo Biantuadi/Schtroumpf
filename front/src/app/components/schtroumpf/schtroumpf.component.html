@@ -1,5 +1,6 @@
-<div class="container">
-    <app-update-form *ngIf="updateForm" [updateFormContainer]="updateForm"></app-update-form>
+<app-update-form *ngIf="updateForm" [updateFormContainer]="updateForm"
+    (updateFormContainerChange)="onUpdateFormContainerChange($event)"></app-update-form>
+<div class="container_schtroumpf">
 
     <div class="schtroumpf" *ngFor="let schtroumpf of schtroumpfs">
 

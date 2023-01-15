@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
@@ -15,15 +15,13 @@ export class UpdateFormComponent {
 
   // @Input() schtroumpfs!: Schtroumpf;*
   @Input() updateFormContainer!: boolean;
+  @Output() updateFormContainerChange = new EventEmitter<boolean>();
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
-    console.log(this.updateForm);
-
     this.updateForm = this.formBuilder.group({
       name: ["", Validators.required],
       role: "",
@@ -38,6 +36,16 @@ export class UpdateFormComponent {
       }))
     );
   }
+
+  closeForm(){
+    this.updateFormContainer = false;
+    this.updateFormContainerChange.emit(this.updateFormContainer);
+
+    const container = document.querySelector('.container_schtroumpf');
+    if (!container) return;
+    
+      container.classList.remove('blur');
+}
 
   onSubmit() { }
 

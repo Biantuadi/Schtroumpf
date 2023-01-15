@@ -10,7 +10,7 @@ import { SchtroumpfService } from 'src/app/services/schtroumpf.service';
 export class SchtroumpfComponent {
   schtroumpfs!: Schtroumpf[];
 
-  updateForm: boolean = true;
+  updateForm: boolean = false;
   userId!: string;
 
   constructor(
@@ -35,7 +35,17 @@ export class SchtroumpfComponent {
   }
 
   onSelect() {
-    console.log('selected')
+    this.updateForm = true;
+
+    const container = document.querySelector('.container_schtroumpf');
+    if (!container) return;
+
+      container.classList.add('blur');
+
+  }
+
+  onUpdateFormContainerChange(updateFormContainer: boolean) {
+    this.updateForm = updateFormContainer;
   }
 
 }
