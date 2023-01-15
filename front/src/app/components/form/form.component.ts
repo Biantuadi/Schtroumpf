@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -8,7 +9,23 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormComponent {
   loginForm!: FormGroup;
+  isSignupPage = false;
 
-  onSubmit() {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+  ) { }
+
+  ngOnInit() {
+    if (this.router.url == "/signup") this.isSignupPage = true;
+
+    this.loginForm = this.formBuilder.group({
+
+    })
+
+
+  }
+
+  onSubmit() { }
 
 }
