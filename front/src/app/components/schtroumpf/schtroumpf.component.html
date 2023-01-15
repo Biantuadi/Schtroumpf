@@ -1,12 +1,20 @@
-<div class="schtroumpf">
-    <img src="{{schtroumpf.imageUrl}}" alt="">
+<app-update-form *ngIf="updateForm" [updateFormContainer]="updateForm"
+    (updateFormContainerChange)="onUpdateFormContainerChange($event)"></app-update-form>
+<div class="container_schtroumpf">
 
-    <div class="container_name">
-        <h3>{{schtroumpf.name}}</h3>
-        <span>{{schtroumpf.bio}}</span>
-    </div>
+    <div class="schtroumpf" *ngFor="let schtroumpf of schtroumpfs">
 
-    <div class="role">
-        <span><span class="span_color">role</span> : <span class="role_from_data">{{schtroumpf.role}}</span></span>
+
+        <i class="fas fa-edit icon_edit" (click)="onSelect()" *ngIf="schtroumpf._id.toString() == userId"></i>
+        <img src="{{schtroumpf.imageUrl}}" alt="">
+
+        <div class="container_name">
+            <h3>{{schtroumpf.name}}</h3>
+            <span>{{schtroumpf.bio}}</span>
+        </div>
+
+        <div class="role">
+            <span><span class="span_color">role</span> : <span class="role_from_data">{{schtroumpf.role}}</span></span>
+        </div>
     </div>
 </div>

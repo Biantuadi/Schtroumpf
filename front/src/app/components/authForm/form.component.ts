@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -43,6 +43,7 @@ export class FormComponent {
 
   onSubmit() {
     if (this.authForm.invalid) return;
+    this.authForm.value.name = this.authForm.value.name.toLowerCase();
 
     switch (this.router.url) {
 
@@ -53,6 +54,7 @@ export class FormComponent {
             this._authService.login(this.authForm.value).subscribe(
               (res: any) => {
                 this._tokenService.saveToken(res.token);
+                localStorage.setItem("userId", res.userId);
                 this.router.navigate(['/']);
                 this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
               },
