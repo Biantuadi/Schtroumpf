@@ -1,3 +1,10 @@
+.container {
+    width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 60px;
+
+}
 .schtroumpf {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -8,6 +15,7 @@
     align-items: center;
     padding: 18px;
     gap: 13px;
+    position: relative;
 
     img {
         width: 100%;
@@ -28,7 +36,7 @@
         }
     }
 
-    .role{
+    .role {
         width: 100%;
         text-align: start;
     }
@@ -38,8 +46,19 @@
         font-weight: 600;
     }
 
-    .role_from_data{
+    .role_from_data {
         font-weight: 700;
         text-transform: capitalize;
+    }
+
+    .icon_edit {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border-radius: 50%;
+        background: #287DBD;
+        padding: 6px;
+        cursor: pointer;
+        color: #fff;
     }
 }

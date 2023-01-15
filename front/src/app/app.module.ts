@@ -10,8 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormComponent } from './components/form/form.component';
+import { FormComponent } from './components/authForm/form.component';
 import { SchtroumpfComponent } from './components/schtroumpf/schtroumpf.component';
+import { UpdateFormComponent } from './components/update-form/update-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SchtroumpfComponent } from './components/schtroumpf/schtroumpf.componen
     ProfilComponent,
     RegisterComponent,
     FormComponent,
-    SchtroumpfComponent
+    SchtroumpfComponent,
+    UpdateFormComponent
   ],
   imports: [
     BrowserModule,
