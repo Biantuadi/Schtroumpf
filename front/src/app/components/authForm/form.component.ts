@@ -30,7 +30,7 @@ export class FormComponent {
       name: ["", Validators.required],
       role: "",
       password: ["", Validators.required]
-    }, { updateOn: 'blur' })
+    })
 
     this.formPreview$ = this.authForm.valueChanges.pipe(
       map((formValue) => ({
@@ -41,8 +41,41 @@ export class FormComponent {
 
   }
 
+  closeError() {
+    const divErros = document.querySelector('.errors');
+    if (!divErros) return;
+
+    divErros.classList.remove('show');
+  }
+
+  erros(err: any) {
+    {
+      const errors = err;
+      const divErros = document.querySelector('.errors');
+      const divErrosP = document.querySelector('.errors  span');
+
+      if (!divErros || !divErrosP) return;
+
+      divErrosP.innerHTML = `${errors}`;
+      divErros.classList.add('show');
+
+    }
+  }
+
   onSubmit() {
-    if (this.authForm.invalid) return;
+    if (this.authForm.invalid) {
+      let ceQuiEstInvalide = "";
+      const errorName: any = this.authForm.controls['name'].invalid ? 'Le nom est requis' : '';
+      const errorPassword: any = this.authForm.controls['password'].invalid ? 'Le mot de passe est requis' : '';
+      const bothEmpty: any = this.authForm.controls['name'].invalid && this.authForm.controls['password'].invalid ? 'Les deux champs sont requis' : '';
+
+      if (errorName) ceQuiEstInvalide += errorName;
+      if (errorPassword) ceQuiEstInvalide += errorPassword;
+      if (bothEmpty) ceQuiEstInvalide = bothEmpty;
+
+     return this.erros(ceQuiEstInvalide);
+    };
+
     this.authForm.value.name = this.authForm.value.name.toLowerCase();
 
     switch (this.router.url) {
@@ -58,10 +91,10 @@ export class FormComponent {
                 this.router.navigate(['/']);
                 this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
               },
-              (err) => console.log(err)
+              (err) => this.erros(err.error.message)
             )
           },
-          (err) => console.log(err)
+          (err) => this.erros(err.error.message)
         )
         break;
 
@@ -74,7 +107,7 @@ export class FormComponent {
             this.router.navigate(['/']);
             this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
           },
-          (err) => console.log(err)
+          (err) => this.erros(err.error.message)
         )
         break;
 
