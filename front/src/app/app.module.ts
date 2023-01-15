@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormComponent } from './components/form/form.component';
+import { SchtroumpfComponent } from './components/schtroumpf/schtroumpf.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormComponent } from './components/form/form.component';
     LoginComponent,
     ProfilComponent,
     RegisterComponent,
-    FormComponent
+    FormComponent,
+    SchtroumpfComponent
   ],
   imports: [
     BrowserModule,

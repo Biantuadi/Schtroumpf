@@ -11,7 +11,7 @@ header {
         font-weight: 700;
 
         span {
-            color: #c76395;
+            color: #287DBD;
         }
     }
 
@@ -26,14 +26,14 @@ header {
             cursor: pointer;
 
             &:hover {
-                border-bottom: 1px solid #c76395;
-                color: #c76395;
+                border-bottom: 1px solid #287DBD;
+                color: #287DBD;
             }
         }
 
         .active {
-            border-bottom: 1px solid #c76395;
-            color: #c76395;
+            border-bottom: 1px solid #287DBD;
+            color: #287DBD;
         }
     }
 
