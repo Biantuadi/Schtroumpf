@@ -77,10 +77,22 @@ exports.modifySchtroumpf = (req, res) => {
     if (oldName === req.body.name || oldRole === req.body.role)
       return res.status(400).json({ error: "Aucune modification !" });
 
-    Schtroumpf.updateOne(
+    if (Object.values(req.body).every((val) => val === ""))
+      return res
+        .status(400)
+        .json({ error: "Les champs ne peuvent pas être vide" });
+
+    const filledFields = Object.entries(req.body).filter(
+      ([_, value]) => value !== ""
+    );
+
+    const [field] = filledFields;
+    const updateData = Object.assign(
       { _id: req.params.id },
-      { ...req.body, _id: req.params.id }
-    )
+      { [field[0]]: field[1] }
+    );
+
+    Schtroumpf.updateOne({ _id: req.params.id }, updateData)
       .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))
       .catch((err) => res.status(500).json({ error: err }));
   });
