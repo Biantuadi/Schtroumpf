@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px 80px;
+    justify-content: space-between;
+
+    h2 {
+        font-family: 'Italianno', sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+
+        span {
+            color: #287DBD;
+        }
+    }
+
+    .header_nav {
+        display: flex;
+
+        li {
+            margin-right: 15px;
+            border-radius: 5px;
+            border-bottom: 1px solid transparent;
+            padding: 5px 10px;
+            cursor: pointer;
+
+            &:hover {
+                border-bottom: 1px solid #287DBD;
+                color: #287DBD;
+            }
+        }
+
+        .active {
+            border-bottom: 1px solid #287DBD;
+            color: #287DBD;
+        }
+    }
+
+
+
+
+}

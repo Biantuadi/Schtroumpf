@@ -1,0 +1,42 @@
+.container_login {
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.main_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+
+
+    h3 {
+        font-family: 'Italianno', sans-serif;
+        font-size: 50px;
+        font-weight: 700;
+
+        span {
+            color: #287DBD;
+        }
+    }
+
+    .formeContainer {
+        width: 100%;
+        max-width: 400px;
+        padding: 60px 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+
+}

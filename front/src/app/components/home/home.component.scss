@@ -1,0 +1,33 @@
+.container_home {
+    height: 100vh;
+    overflow: hidden;
+
+    .main_container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 55px 0 0 0;
+        gap: 50px;
+        align-items: center;
+
+        input {
+            width: 200px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+    }
+
+    .schtroumpfs_container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 60px;
+
+
+    }
+}

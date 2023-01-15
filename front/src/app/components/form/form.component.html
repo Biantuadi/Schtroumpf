@@ -1,0 +1,22 @@
+<form action="" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <br>
+    <div class="form-group">
+        <input type="name" class="form-control" id="name" placeholder="schtrompfName" formControlName="name">
+        <span class="error"
+            *ngIf="authForm.controls['name'].invalid && (authForm.controls['name'].dirty || authForm.controls['name'].touched)">
+            Le nom du schtroumpf est requis </span>
+    </div>
+    <div class="form-group" *ngIf="isSignupPage">
+        <br>
+        <input type="text" class="form-control" id="role" placeholder="role" formControlName="role">
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+        <span class="error"
+            *ngIf="authForm.controls['password'].invalid && (authForm.controls['password'].dirty || authForm.controls['password'].touched)">
+            Le mot de pass est requis </span>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

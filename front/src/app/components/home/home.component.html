@@ -1,0 +1,15 @@
+<div class="container_home">
+    <app-header></app-header>
+
+    <main class="main_container">
+        <input type="text"  placeholder="search">
+
+        <div class="schtroumpfs_container">
+
+           
+
+            <app-schtroumpf *ngFor="let schtroumpf of schtroumpfs" [schtroumpf]="schtroumpf"></app-schtroumpf>
+
+        </div>
+    </main>
+</div>

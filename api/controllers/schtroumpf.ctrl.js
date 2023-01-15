@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.loginSchtroumpf = (req, res) => {
-  Schtroumpf.findOne({ email: req.body.email })
+  Schtroumpf.findOne({ name: req.body.name })
     .then((schtroumpf) => {
       if (!schtroumpf)
         return res.status(401).json({ message: "Utilisateur non trouvé !" });

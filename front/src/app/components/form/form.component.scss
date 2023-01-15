@@ -1,0 +1,36 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+
+        span {
+            color: red;
+            font-size: 13px;
+            margin-top: -7px;
+        }
+    }
+
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    button {
+        width: 100px;
+        padding: 10px;
+        background: #333;
+        color: #fff;
+        border: none;
+    }
+}
