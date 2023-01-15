@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +19,8 @@ export class FormComponent {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _tokenService : TokenService
   ) { }
 
   ngOnInit() {
@@ -58,7 +60,9 @@ export class FormComponent {
       case "/login":
 
         this._authService.login(this.authForm.value).subscribe(
-          () => console.log("success"),
+          (res: any) => {
+            this._tokenService.saveToken(res.token);
+          },
           (err) => console.log(err)
         )
         break;
