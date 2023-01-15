@@ -102,15 +102,12 @@ exports.deleteSchtroumpf = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
   const decodedToken = jwt.verify(token, process.env.JWT_KEY);
   const userId = decodedToken.userId;
-  const role = decodedToken.role;
 
   // if the user is an admin, delete the user
-  if (role === "admin" || userId === req.params.id) {
-    userModel
-      .deleteOne({ _id: req.params.id })
-      .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
-      .catch((err) => res.status(500).json({ error: err }));
-  } else {
-    res.status(401).json({ error: "Vous n'êtes pas autorisé !" });
-  }
+  if (userId !== req.params.id)
+    return res.status(401).json({ error: "Vous n'êtes pas autorisé !" });
+
+  Schtroumpf.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: "Utilisateur supprimé !" }))
+    .catch((err) => res.status(500).json({ error: err }));
 };
