@@ -76,7 +76,6 @@ export class UpdateFormComponent {
       },
       (err) => {
         const errors = err.error.error;
-        console.log(errors);
 
         const divErros = document.querySelector('.errors');
         const divErrosP = document.querySelector('.errors  span');

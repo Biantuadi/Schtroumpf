@@ -57,12 +57,6 @@ exports.getAllSchtroumpfs = (req, res) => {
     .catch((err) => res.status(500).json({ error: err }));
 };
 
-exports.getSchtroumpf = (req, res) => {
-  Schtroumpf.findOne({ _id: req.params.id })
-    .select("-password")
-    .then((user) => res.status(200).json(user))
-    .catch((err) => res.status(500).json({ error: err }));
-};
 
 exports.modifySchtroumpf = (req, res) => {
   // get user data
@@ -86,11 +80,35 @@ exports.modifySchtroumpf = (req, res) => {
       ([_, value]) => value !== ""
     );
 
-    const [field] = filledFields;
-    const updateData = Object.assign(
-      { _id: req.params.id },
-      { [field[0]]: field[1] }
-    );
+    let updateData = {};
+
+    filledFields.forEach(([key, value]) => {
+      updateData[key] = value;
+
+      if (key === "role") {
+        updateData[key] = value;
+      } else {
+        updateData[key] = value;
+      }
+
+      if (key === "name") {
+        updateData[key] = value;
+      } else {
+        updateData[key] = value;
+      }
+
+      if (key === "imageUrl") {
+        updateData[key] = value;
+      } else {
+        updateData[key] = value;
+      }
+
+      if (key === "bio") {
+        updateData[key] = value;
+      } else {
+        updateData[key] = value;
+      }
+    });
 
     Schtroumpf.updateOne({ _id: req.params.id }, updateData)
       .then(() => res.status(200).json({ message: "Utilisateur modifié !" }))

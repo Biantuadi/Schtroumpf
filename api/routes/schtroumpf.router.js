@@ -14,7 +14,7 @@ router.post("/signup", schtroumpfCtrl.createSchtroumpf);
 
 // CRUD
 router.get("/", auth, schtroumpfCtrl.getAllSchtroumpfs);
-router.get("/:id", auth, schtroumpfCtrl.getSchtroumpf);
+// router.get("/:id", auth, schtroumpfCtrl.getSchtroumpf);
 router.put("/:id", auth, schtroumpfCtrl.modifySchtroumpf);
 router.delete("/:id", auth, schtroumpfCtrl.deleteSchtroumpf);
 

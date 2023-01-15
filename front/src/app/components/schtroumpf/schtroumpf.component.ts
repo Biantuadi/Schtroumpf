@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { SchtroumpfService } from 'src/app/services/schtroumpf/schtroumpf.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -19,7 +20,6 @@ export class SchtroumpfComponent {
   constructor(
     private schtroumpfService: SchtroumpfService,
     private tokenService: TokenService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,8 +56,7 @@ export class SchtroumpfComponent {
       (res) => {
         this.schtroumpfs = this.schtroumpfs.filter(schtroumpf => schtroumpf._id !== id);
         localStorage.clear();
-        this.router.navigate(['/login']);
-
+        window.location.reload();
       }, 
       (err) => console.log(err)
     )
