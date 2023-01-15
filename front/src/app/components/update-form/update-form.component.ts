@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
+import { SchtroumpfService } from 'src/app/services/schtroumpf/schtroumpf.service';
 
 @Component({
   selector: 'app-update-form',
@@ -20,6 +21,7 @@ export class UpdateFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private stroumpfService: SchtroumpfService,
   ) { }
 
   ngOnInit() {
@@ -51,9 +53,21 @@ export class UpdateFormComponent {
     container.classList.remove('blur');
   }
 
-  onSubmit() { 
-    console.log(this.updateForm.value);
-    
+  onSubmit() {
+    const formValue = this.updateForm.value;
+    const userId = localStorage.getItem('userId');
+
+    if (!userId) return;
+
+    this.stroumpfService.updateSchtroumpf(userId, formValue).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => console.log(err)
+    )
+
+
+    this.closeForm();
   }
 
 }

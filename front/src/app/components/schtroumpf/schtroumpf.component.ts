@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
-import { SchtroumpfService } from 'src/app/services/schtroumpf.service';
+import { SchtroumpfService } from 'src/app/services/schtroumpf/schtroumpf.service';
 
 @Component({
   selector: 'app-schtroumpf',

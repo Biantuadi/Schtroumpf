@@ -1,5 +1,4 @@
 import { Component, Renderer2 } from '@angular/core';
-import { SchtroumpfService } from 'src/app/services/schtroumpf.service';
 
 @Component({
   selector: 'app-home',

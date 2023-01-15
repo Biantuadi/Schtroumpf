@@ -23,4 +23,8 @@ export class SchtroumpfService {
   getschtroumpfs() {
     return this.http.get(`${this.apiUrl}/`, this.httpOptions);
   }
+
+  updateSchtroumpf(id: string, schtroumpf: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, schtroumpf, this.httpOptions);
+  }
 }
