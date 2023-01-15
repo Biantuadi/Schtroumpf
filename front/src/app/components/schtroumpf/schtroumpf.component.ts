@@ -41,6 +41,16 @@ export class SchtroumpfComponent {
 
   }
 
+  deleteSchtroumpf(id: any) {
+
+    // this.schtroumpfService.deleteSchtroumpf(id).subscribe(
+    //   (res) => {
+    //     this.schtroumpfs = this.schtroumpfs.filter(schtroumpf => schtroumpf._id !== id);
+    //   },
+    //   (err) => console.log(err)
+    // )
+  }
+
   onSelect() {
     this.updateForm = true;
 

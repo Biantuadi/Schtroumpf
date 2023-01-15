@@ -53,6 +53,46 @@
 
 }
 
+.errors {
+    color: white;
+    margin-top: -7px;
+    position: absolute;
+    top: 19px;
+    right: 15px;
+    padding: 23px 40px;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    background: #de283d;
+    text-transform: unset;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+
+    i,
+    span {
+        font-weight: 800;
+        color: #fff;
+        font-size: 17px;
+        cursor: pointer;
+    }
+
+    i {
+        font-size: 25px;
+    }
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+}
+
 
 
 form {
@@ -71,7 +111,6 @@ form {
             color: red;
             font-size: 13px;
             margin-top: -7px;
-            display: none;
         }
 
         .showError {

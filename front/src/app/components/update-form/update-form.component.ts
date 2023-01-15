@@ -22,6 +22,7 @@ export class UpdateFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private stroumpfService: SchtroumpfService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,7 +34,7 @@ export class UpdateFormComponent {
       role: "",
       imageUrl: ["", Validators.pattern(this.urlRegex)],
       bio: "",
-    });
+    }, { updateOn: 'blur' });
 
     this.formPreview$ = this.updateForm.valueChanges.pipe(
       map((formValue) => ({
@@ -53,6 +54,13 @@ export class UpdateFormComponent {
     container.classList.remove('blur');
   }
 
+  closeError(){
+    const divErros = document.querySelector('.errors');
+    if (!divErros) return;
+
+    divErros.classList.remove('show');
+  }
+
   onSubmit() {
     const formValue = this.updateForm.value;
     const userId = localStorage.getItem('userId');
@@ -62,12 +70,25 @@ export class UpdateFormComponent {
     this.stroumpfService.updateSchtroumpf(userId, formValue).subscribe(
       (res) => {
         console.log(res);
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false; /*  on va désactiver le cache de la route */
+        this.router.onSameUrlNavigation = 'reload';                     /*  en suite il va recharger la page */
+        this.router.navigate(['/home']);
       },
-      (err) => console.log(err)
+      (err) => {
+        const errors = err.error.error;
+        console.log(errors);
+
+        const divErros = document.querySelector('.errors');
+        const divErrosP = document.querySelector('.errors  span');
+
+        if (!divErros ||  !divErrosP) return;
+
+        divErrosP.innerHTML = `${errors}`;
+        divErros.classList.add('show');
+
+      }
     )
 
-
-    this.closeForm();
   }
 
 }

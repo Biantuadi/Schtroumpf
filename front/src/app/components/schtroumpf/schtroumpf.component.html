@@ -4,7 +4,8 @@
 
     <div class="schtroumpf" *ngFor="let schtroumpf of schtroumpfs">
 
-
+        <!-- icon delete -->
+        <i class="fas fa-trash-alt icon_delete" (click)="deleteSchtroumpf(schtroumpf._id)" *ngIf="schtroumpf._id.toString() == userId"></i>
         <i class="fas fa-edit icon_edit" (click)="onSelect()" *ngIf="schtroumpf._id.toString() == userId"></i>
         <img src="{{schtroumpf.imageUrl}}" alt="">
 

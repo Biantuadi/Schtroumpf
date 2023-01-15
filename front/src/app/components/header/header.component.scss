@@ -35,6 +35,24 @@ header {
             }
         }
 
+        li {
+            margin-right: 15px;
+            border-radius: 5px;
+            border-bottom: 1px solid transparent;
+            padding: 5px 10px;
+            cursor: pointer;
+
+            &:hover {
+                border-bottom: 1px solid #287DBD;
+                color: #287DBD;
+            }
+
+            &.active {
+                border-bottom: 1px solid #287DBD;
+                color: #287DBD;
+            }
+        }
+
         .active {
             color: #fff;
             background: #287DBD;
