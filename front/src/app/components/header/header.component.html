@@ -6,7 +6,7 @@
     <nav class="header_nav" *ngIf="isLogged">
         <li routerLink="/home" routerLinkActive="active">Accueil</li>
         <li routerLink="/profile" routerLinkActive="active">Profile</li>
-        <button routerLink="/login" routerLinkActive="active">Logout</button>
+        <button (click)="logout()">Logout</button>
     </nav>
 
 

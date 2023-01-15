@@ -20,7 +20,7 @@ export class FormComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private _authService: AuthService,
-    private _tokenService : TokenService
+    private _tokenService: TokenService
   ) { }
 
   ngOnInit() {
@@ -39,9 +39,6 @@ export class FormComponent {
       }))
     )
 
-
-
-
   }
 
   onSubmit() {
@@ -52,7 +49,16 @@ export class FormComponent {
       case "/signup":
 
         this._authService.signup(this.authForm.value).subscribe(
-          () => console.log("success"),
+          () => {
+            this._authService.login(this.authForm.value).subscribe(
+              (res: any) => {
+                this._tokenService.saveToken(res.token);
+                this.router.navigate(['/']);
+                this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
+              },
+              (err) => console.log(err)
+            )
+          },
           (err) => console.log(err)
         )
         break;
@@ -62,6 +68,8 @@ export class FormComponent {
         this._authService.login(this.authForm.value).subscribe(
           (res: any) => {
             this._tokenService.saveToken(res.token);
+            this.router.navigate(['/']);
+            this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
           },
           (err) => console.log(err)
         )
