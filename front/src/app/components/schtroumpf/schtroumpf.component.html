@@ -1,9 +1,10 @@
 <div class="container">
-    <app-update-form *ngIf="updateForm" [updateForm]="updateForm"></app-update-form>
+    <app-update-form *ngIf="updateForm" [updateFormContainer]="updateForm"></app-update-form>
 
     <div class="schtroumpf" *ngFor="let schtroumpf of schtroumpfs">
 
-        <i class="fas fa-edit icon_edit" (click)="onSelect()" *ngIf="isAuthore"></i>
+
+        <i class="fas fa-edit icon_edit" (click)="onSelect()" *ngIf="schtroumpf._id.toString() == userId"></i>
         <img src="{{schtroumpf.imageUrl}}" alt="">
 
         <div class="container_name">

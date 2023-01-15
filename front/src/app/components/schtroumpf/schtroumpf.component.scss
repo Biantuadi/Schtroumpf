@@ -1,10 +1,11 @@
 .container {
     width: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 60px;
 
 }
+
 .schtroumpf {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -11,7 +11,7 @@ export class SchtroumpfComponent {
   schtroumpfs!: Schtroumpf[];
 
   updateForm: boolean = true;
-  isAuthore: boolean = false;
+  userId!: string;
 
   constructor(
     private schtroumpfService: SchtroumpfService,
@@ -28,8 +28,9 @@ export class SchtroumpfComponent {
       (err) => console.log(err)
     )
 
-    // if (localStorage.getItem('userId') !== this.schtroumpf._id.toString()) return;
-    // this.isAuthore = true
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+    this.userId = userId;
 
   }
 
