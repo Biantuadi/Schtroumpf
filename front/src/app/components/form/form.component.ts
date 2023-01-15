@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
 
 @Component({
   selector: 'app-form',
@@ -8,8 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  loginForm!: FormGroup;
+  authForm!: FormGroup;
   isSignupPage = false;
+  formPreview$!: Observable<Schtroumpf>;
 
   constructor(
     private router: Router,
@@ -19,9 +22,20 @@ export class FormComponent {
   ngOnInit() {
     if (this.router.url == "/signup") this.isSignupPage = true;
 
-    this.loginForm = this.formBuilder.group({
+    this.authForm = this.formBuilder.group({
+      name: ["", Validators.required],
+      role: "",
+      password: ["", Validators.required]
+    }, { updateOn: 'blur' })
 
-    })
+    this.formPreview$ = this.authForm.valueChanges.pipe(
+      map((formValue) => ({
+        ...formValue,
+        id: 0,
+      }))
+    )
+
+
 
 
   }

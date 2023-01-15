@@ -3,6 +3,18 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 3px;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+
+        span {
+            color: red;
+            font-size: 13px;
+            margin-top: -7px;
+        }
+    }
 
 
     input {
