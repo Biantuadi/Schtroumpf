@@ -27,4 +27,8 @@ export class SchtroumpfService {
   updateSchtroumpf(id: string, schtroumpf: any) {
     return this.http.put(`${this.apiUrl}/${id}`, schtroumpf, this.httpOptions);
   }
+
+  deleteSchtroumpf(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions);
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Schtroumpf } from 'src/app/models/Schtroumpf.model';
 import { SchtroumpfService } from 'src/app/services/schtroumpf/schtroumpf.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-schtroumpf',
@@ -12,14 +14,19 @@ export class SchtroumpfComponent {
 
   updateForm: boolean = false;
   userId!: string;
+  isAdmin!: boolean;
 
   constructor(
     private schtroumpfService: SchtroumpfService,
+    private tokenService: TokenService,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
     if (!localStorage.getItem('token')) return;
+
+    this.tokenService.isAdmin() ? this.isAdmin = true : this.isAdmin = false;
 
     this.schtroumpfService.getschtroumpfs().subscribe(
       (res: any) => {
@@ -42,13 +49,18 @@ export class SchtroumpfComponent {
   }
 
   deleteSchtroumpf(id: any) {
+    const confirmDelete = confirm('Voulez-vous vraiment supprimer votre compte ?');
+    if (!confirmDelete) return;
 
-    // this.schtroumpfService.deleteSchtroumpf(id).subscribe(
-    //   (res) => {
-    //     this.schtroumpfs = this.schtroumpfs.filter(schtroumpf => schtroumpf._id !== id);
-    //   },
-    //   (err) => console.log(err)
-    // )
+    this.schtroumpfService.deleteSchtroumpf(id).subscribe(
+      (res) => {
+        this.schtroumpfs = this.schtroumpfs.filter(schtroumpf => schtroumpf._id !== id);
+        localStorage.clear();
+        this.router.navigate(['/login']);
+
+      }, 
+      (err) => console.log(err)
+    )
   }
 
   onSelect() {
