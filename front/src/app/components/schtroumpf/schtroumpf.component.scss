@@ -1,13 +1,45 @@
 .schtroumpf {
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    width: 225px;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+    gap: 13px;
 
-    img{
+    img {
         width: 100%;
-        // height: 100%;
         object-fit: cover;
         border-radius: 15px;
+    }
+
+    .container_name {
+        text-align: center;
+
+        h3 {
+            text-transform: capitalize;
+            color: #287DBD;
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .role{
+        width: 100%;
+        text-align: start;
+    }
+
+    .span_color {
+        color: #287DBD;
+        font-weight: 600;
+    }
+
+    .role_from_data{
+        font-weight: 700;
+        text-transform: capitalize;
     }
 }

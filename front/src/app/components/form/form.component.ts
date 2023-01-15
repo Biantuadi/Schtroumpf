@@ -68,6 +68,7 @@ export class FormComponent {
         this._authService.login(this.authForm.value).subscribe(
           (res: any) => {
             this._tokenService.saveToken(res.token);
+            localStorage.setItem("userId", res.userId);
             this.router.navigate(['/']);
             this._authService.changeAuthStatus(true); /* On va changer le status de l'observable. */
           },
